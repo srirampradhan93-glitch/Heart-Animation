@@ -1,0 +1,420 @@
+<!-- 
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love Circle Animation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* TITLE */
+
+.title {
+    font-size: clamp(32px, 6vw, 60px);
+    margin-bottom: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #ff9bd8,
+        white,
+        #ff9bd8
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow:
+        0 0 10px #ff66cc,
+        0 0 25px #ff66cc;
+}
+
+/* MAIN BOX */
+
+.heart-box {
+    width: min(90vw, 850px);
+    height: min(65vh, 650px);
+
+    border: 4px solid #eee;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #ff7bd5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+/* CIRCLE AREA */
+
+.circle {
+    width: 430px;
+    height: 430px;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    animation: heartbeat 2s infinite ease-in-out;
+}
+
+/* GLOWING CIRCLE */
+
+.circle::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border: 2px solid rgba(255, 120, 210, 0.25);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 20px #ff66cc,
+        inset 0 0 20px #ff66cc;
+}
+
+/* ROTATING TEXT */
+
+.orbit {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    animation: rotateCircle 8s linear infinite;
+}
+
+/* TEXT */
+
+.love {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 100px;
+
+    margin-left: -50px;
+    margin-top: -10px;
+
+    color: #ff9bd8;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 5px #ff69c9,
+        0 0 10px #ff69c9,
+        0 0 20px #ff69c9,
+        0 0 30px #ff69c9;
+
+    transform-origin: 50px 10px;
+}
+
+/* Put text around circle */
+
+.love:nth-child(1) {
+    transform: rotate(0deg) translateX(180px);
+}
+
+.love:nth-child(2) {
+    transform: rotate(30deg) translateX(180px);
+}
+
+.love:nth-child(3) {
+    transform: rotate(60deg) translateX(180px);
+}
+
+.love:nth-child(4) {
+    transform: rotate(90deg) translateX(180px);
+}
+
+.love:nth-child(5) {
+    transform: rotate(120deg) translateX(180px);
+}
+
+.love:nth-child(6) {
+    transform: rotate(150deg) translateX(180px);
+}
+
+.love:nth-child(7) {
+    transform: rotate(180deg) translateX(180px);
+}
+
+.love:nth-child(8) {
+    transform: rotate(210deg) translateX(180px);
+}
+
+.love:nth-child(9) {
+    transform: rotate(240deg) translateX(180px);
+}
+
+.love:nth-child(10) {
+    transform: rotate(270deg) translateX(180px);
+}
+
+.love:nth-child(11) {
+    transform: rotate(300deg) translateX(180px);
+}
+
+.love:nth-child(12) {
+    transform: rotate(330deg) translateX(180px);
+}
+
+/* CENTER HEART */
+
+.heart {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
+
+    width: 90px;
+    height: 90px;
+
+    background: #ff1493;
+
+    box-shadow:
+        0 0 15px #ff1493,
+        0 0 35px #ff1493,
+        0 0 70px #ff1493;
+
+    animation: heartBeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    background: #ff1493;
+
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -45px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 45px;
+}
+
+/* CENTER TEXT */
+
+.center-text {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 15px #ff66cc;
+}
+
+/* ROTATION */
+
+@keyframes rotateCircle {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* HEARTBEAT */
+
+@keyframes heartBeat {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(0.9);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(1.15);
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            rotate(-45deg)
+            scale(0.9);
+    }
+}
+
+/* CIRCLE PULSE */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(0.95);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+}
+
+/* BOTTOM TEXT */
+
+.bottom-text {
+    margin-top: 30px;
+
+    font-size: clamp(20px, 4vw, 40px);
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px #ff66cc;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .love {
+        font-size: 14px;
+    }
+
+    .love:nth-child(1),
+    .love:nth-child(2),
+    .love:nth-child(3),
+    .love:nth-child(4),
+    .love:nth-child(5),
+    .love:nth-child(6),
+    .love:nth-child(7),
+    .love:nth-child(8),
+    .love:nth-child(9),
+    .love:nth-child(10),
+    .love:nth-child(11),
+    .love:nth-child(12) {
+        transform-origin: 50px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="title">
+    Love Heart Animation
+</h1>
+
+<div class="heart-box">
+
+    <div class="circle">
+
+        <!-- ROTATING TEXT -->
+
+        <div class="orbit">
+
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+            <div class="love">I like you</div>
+
+        </div>
+
+        <!-- HEART -->
+
+        <div class="heart"></div>
+
+        <div class="center-text">
+            Love
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bottom-text">
+    Comment "Love" for Code
+</div>
+
+</body>
+</html>
